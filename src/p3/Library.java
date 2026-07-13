@@ -1,11 +1,43 @@
 package p3;
 
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Library<T> {
     Collection<T> bib = new LinkedList<>();
-    //TODO: h) und weiter!
+
+    public boolean hasDuplicate01(){
+        Queue<T> q = new ArrayDeque<T>();
+        boolean b = false;
+        outer:
+        for (T t : bib){
+            if (q.isEmpty()){
+                q.offer(t);
+                continue;
+            }
+            else{
+                for(T t2 : q){
+                    if (t.equals(t2)){
+                        b = true;
+                        break outer;
+                    }
+                }
+            }
+            q.offer(t);
+        }
+        return b;
+    }
+
+    public boolean hasDuplicate02(){
+        Set<T> s = new HashSet<>();
+        boolean b;
+        for (T t : bib){
+            b = s.add(t);
+            if (b == false){
+                return true; //Duplikat gefunden
+            }
+        }
+        return false;
+    }
 
     public void showLibrary(){
         for(T t : bib){
