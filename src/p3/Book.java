@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Book {
     private String title;
-    private WaitingList waitingList;
+    private WaitingList waitingList = new WaitingList();
     public Book(String title){
         this.title = title;
     }

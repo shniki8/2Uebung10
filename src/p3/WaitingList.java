@@ -23,4 +23,26 @@ public class WaitingList {
         }else System.out.println(waitingList.poll());
     }
     //battery.isEmpty() ist gerade fast true
+    public boolean isEmpty(){
+        return waitingList.isEmpty();
+    }
+
+    public boolean contains(String s){
+        for (String s2 : waitingList){
+            if (s.equalsIgnoreCase(s2)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public String peek(){
+        return waitingList.peek();
+    }
+    public String poll(){
+        if (!isEmpty()){
+            return waitingList.poll();
+        }
+        else return "";
+    }
 }
